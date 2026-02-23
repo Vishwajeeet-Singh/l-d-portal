@@ -163,8 +163,9 @@ ppt_resources = [
      "https://ssipvtltd-my.sharepoint.com/:p:/g/personal/abhijeet_sharma_ssinnovations_org/IQBby9LKB_sCSZJ36AjHnK8NAUolaXWtC8Ty3s7AQWIUW0E"),
     ("📊 7 QC Tools", "Quality control & problem solving",
      "https://ssipvtltd-my.sharepoint.com/:p:/g/personal/vishwajeet_singh_ssinnovations_org/IQBTE2k9_MqVTqnSVOhxXyNnAQq8ItRIiBrzdByt_GDhJx4"),
+    ("📦 Material Handling", "Move, Store, Protect, and Control materials safely and efficiently",
+     "https://ssipvtltd-my.sharepoint.com/:p:/g/personal/vishwajeet_singh_ssinnovations_org/IQDx7LkkIp0-QZ2RwIJ1iNpJAQTLGIlColK1kXSvJnNG8DQ?e=Pgufb7"),
 ]
-
 cols = st.columns(4)
 for i, (title, desc, link) in enumerate(ppt_resources):
     with cols[i % 4]:
@@ -202,6 +203,8 @@ assessment_resources = [
      "https://www.classmarker.com/online-test/start/?quiz=kmp690ddbae4af1a"),
     ("📊 7 QC Tools Assessment", "QC tools understanding",
      "https://www.classmarker.com/online-test/start/?quiz=kbx695baa18c2df5"),
+    ("📦 Material Handling", "Move, Store, Protect, and Control materials safely and efficiently",
+     "https://www.classmarker.com/online-test/start/?quiz=tnv6978978c8d7b2"),
 ]
 
 cols = st.columns(4)
