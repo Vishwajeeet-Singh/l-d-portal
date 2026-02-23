@@ -20,19 +20,13 @@ if "user_role" not in st.session_state:
     st.session_state.user_role = None
 
 # ==================================================
-# LOAD USERS (FROM STREAMLIT SECRETS)
+# LOAD USERS (FROM users.xlsx)
 # ==================================================
 @st.cache_data
 def load_users():
-    users = st.secrets["users"]
+    df = pd.read_excel("users.xlsx")
 
-    df = pd.DataFrame({
-        "email": users["email"],
-        "password": users["password"],
-        "role": users["role"]
-    })
-
-    df["email"] = df["email"].astype(str).str.strip()
+    df["email"] = df["email"].astype(str).str.strip().str.lower()
     df["password"] = df["password"].astype(str).str.strip()
     df["role"] = df["role"].astype(str).str.strip().str.lower()
 
@@ -40,9 +34,8 @@ def load_users():
 
 users_df = load_users()
 
-
 # ==================================================
-# GLOBAL THEME (SAME AS HOME)
+# GLOBAL THEME
 # ==================================================
 st.markdown("""
 <style>
@@ -50,7 +43,6 @@ st.markdown("""
     background-color: #ADD8E6;
 }
 
-/* Header */
 [data-testid="stHeader"] {
     background: linear-gradient(180deg, #0B3C5D, #06283D);
 }
@@ -58,12 +50,10 @@ st.markdown("""
     color: white !important;
 }
 
-/* Sidebar (hidden visually but keeps layout consistent) */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #0B3C5D, #07263D);
 }
 
-/* Login Card */
 .login-card {
     background: white;
     padding: 45px;
@@ -103,10 +93,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==================================================
-# HEADER BANNER (SAME IMAGE AS HOME)
+# HEADER BANNER
 # ==================================================
 st.markdown("""
-<div class="header-banner" style="
+<div style="
     background:
         linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
         url('https://ssinnovations.com/wp-content/uploads/2025/07/SSI-M3-Home-Splash-MAR25-v3.webp');
@@ -124,7 +114,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==================================================
-# LOGIN CARD
+# LOGIN FORM
 # ==================================================
 st.markdown("""
 <div class="login-card">
@@ -140,18 +130,29 @@ password = st.text_input("Password", type="password")
 # LOGIN LOGIC
 # ==================================================
 if st.button("Login"):
+
+    email = email.strip().lower()
+    password = password.strip()
+
     match = users_df[
-        (users_df["email"] == email.strip()) &
-        (users_df["password"] == password.strip())
+        (users_df["email"] == email) &
+        (users_df["password"] == password)
     ]
 
     if not match.empty:
+        role = match.iloc[0]["role"]
+
         st.session_state.logged_in = True
-        st.session_state.user_email = match.iloc[0]["email"]
-        st.session_state.user_role = match.iloc[0]["role"]
+        st.session_state.user_email = email
+        st.session_state.user_role = role
 
         st.success("Login successful")
-        st.switch_page("pages/0_Home.py")
+
+        # ROLE BASED REDIRECT
+        if role == "admin":
+            st.switch_page("pages/0_Home.py")
+        else:
+            st.switch_page("pages/3_Resources.py")
 
     else:
         st.error("Invalid email or password")

@@ -1,7 +1,8 @@
 import streamlit as st
 
 # ---------------- LOGIN CHECK ----------------
-if "logged_in" not in st.session_state or not st.session_state.logged_in:
+
+if not st.session_state.get("logged_in"):
     st.switch_page("login.py")
 
 # ---------------- SIDEBAR ----------------
