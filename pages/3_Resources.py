@@ -224,9 +224,17 @@ for i, (title, desc, link) in enumerate(assessment_resources):
 # ==================================================
 # FOOTER
 # ==================================================
-st.markdown("""
-<div class="footer">
-    For any access issues, contact the L&D team.<br>
-    © 2026 SS Innovations | Internal Use Only
-</div>
-""", unsafe_allow_html=True)
+st.markdown(
+    """
+    <hr style="margin-top:70px;">
+    <div class="footer">
+        © 2026 SS Innovations International, Inc. <br>
+        © 2026 Sudhir Srivastava Innovations Pvt. Ltd. <br>
+        All products and product names are registered trademarks or pending trademarks. <br>
+        All Rights Reserved | Internal Use Only. <br>
+        Contact: Vishwajeet Singh (vishwajeet.singh@ssinnovations.org (+91 80020-60789)) <br>
+                 Abhijeet Sharma (abhijeet.sharma@ssinnovations.org (+91 96508-14325))
+    </div>
+    """,
+    unsafe_allow_html=True
+)

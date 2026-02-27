@@ -22,7 +22,7 @@ import streamlit as st
 # PAGE CONFIG
 # ==================================================
 st.set_page_config(
-    page_title="SSI Learning & Development",
+    page_title="SSI Learning & Development Portal",
     layout="wide"
 )
 
@@ -225,7 +225,7 @@ with col1:
                 <h3>📊 Training Dashboard</h3>
                 <p>
                     View training completion, department-wise performance,
-                    KPIs and assessment outcomes.
+                     and assessment outcomes.
                 </p>
             </div>
         """,
@@ -242,10 +242,10 @@ with col2:
         """
         <div class="card">
             <div>
-                <h3>📄 Reports</h3>
+                <h3>📄 Training Reports</h3>
                 <p>
                     Download structured reports, historical summaries,
-                    audit-ready and compliance data.
+                     and training data.
                 </p>
             </div>
         """,
@@ -264,8 +264,7 @@ with col3:
             <div>
                 <h3>🌐 Learning Resources</h3>
                 <p>
-                    Access SOPs, policies, certifications,
-                    training material and LMS resources.
+                    Access training ppts and assessement links.
                 </p>
             </div>
         """,
@@ -287,7 +286,9 @@ st.markdown(
         © 2026 SS Innovations International, Inc. <br>
         © 2026 Sudhir Srivastava Innovations Pvt. Ltd. <br>
         All products and product names are registered trademarks or pending trademarks. <br>
-        All Rights Reserved | Internal Use Only
+        All Rights Reserved | Internal Use Only. <br>
+        Contact: Vishwajeet Singh (vishwajeet.singh@ssinnovations.org (+91 80020-60789))<br>
+                 Abhijeet Sharma (abhijeet.sharma@ssinnovations.org (+91 96508-14325))
     </div>
     """,
     unsafe_allow_html=True

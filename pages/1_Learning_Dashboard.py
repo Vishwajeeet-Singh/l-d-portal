@@ -444,7 +444,7 @@ training_completion_pct = round(
     (employees_trained / total_employees) * 100, 1
 ) if total_employees else 0
 
-pending_trainings = (df_filt["Training_Status"] != "Done").sum()
+#pending_trainings = (df_filt["Training_Status"] != "Done").sum()
 
 pass_count = (df_filt["Assessment_Status"] == "Pass").sum()
 fail_count = (df_filt["Assessment_Status"] == "Fail").sum()
@@ -452,6 +452,8 @@ fail_count = (df_filt["Assessment_Status"] == "Fail").sum()
 total_attempted = pass_count + fail_count
 pass_pct = round((pass_count / total_attempted) * 100, 1) if total_attempted else 0
 fail_pct = round((fail_count / total_attempted) * 100, 1) if total_attempted else 0
+
+total_man_hours = len(df_filt)
 
 # ==================================================
 # KPI CARDS (BOXES WITH ROUNDED CORNERS)
@@ -471,20 +473,20 @@ st.markdown(
             <div class="kpi-title">Training Completion %</div>
             <div class="kpi-value">{training_completion_pct}%</div>
         </div>
-        <div class="kpi-card">
-            <div class="kpi-title">Pending Trainings</div>
-            <div class="kpi-value">{pending_trainings}</div>
-        </div>
     </div>
 
     <div class="kpi-row">
         <div class="kpi-card">
-            <div class="kpi-title">Pass %</div>
+            <div class="kpi-title">Assessment Pass %</div>
             <div class="kpi-value">{pass_pct}%</div>
         </div>
         <div class="kpi-card">
-            <div class="kpi-title">Fail %</div>
+            <div class="kpi-title">Assessment Fail %</div>
             <div class="kpi-value">{fail_pct}%</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-title">Total Training Man Hours </div>
+            <div class="kpi-value">{total_man_hours}</div>
         </div>
     </div>
     """,
@@ -573,4 +575,21 @@ st.dataframe(
         by=["Training_Name", "Department", "Employee"]
     ),
     use_container_width=True
+)
+# ==================================================
+# FOOTER
+# ==================================================
+st.markdown(
+    """
+    <hr style="margin-top:70px;">
+    <div class="footer">
+        © 2026 SS Innovations International, Inc. <br>
+        © 2026 Sudhir Srivastava Innovations Pvt. Ltd. <br>
+        All products and product names are registered trademarks or pending trademarks. <br>
+        All Rights Reserved | Internal Use Only. <br>
+        Contact: Vishwajeet Singh (vishwajeet.singh@ssinnovations.org (+91 80020-60789))<br>
+                 Abhijeet Sharma (abhijeet.sharma@ssinnovations.org (+91 96508-14325))
+    </div>
+    """,
+    unsafe_allow_html=True
 )

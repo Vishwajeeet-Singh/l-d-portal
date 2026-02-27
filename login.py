@@ -5,7 +5,7 @@ import pandas as pd
 # PAGE CONFIG
 # ==================================================
 st.set_page_config(
-    page_title="Login | SSI Learning & Development",
+    page_title="Login | SSI Learning & Development Portal",
     layout="wide"
 )
 
@@ -89,6 +89,14 @@ st.markdown("""
 .stButton button:hover {
     background-color: #155A8A;
 }
+/* ---------------- FOOTER ---------------- */
+.footer {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin-top: 60px;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -108,8 +116,8 @@ st.markdown("""
     text-align: center;
     margin-bottom: 40px;
 ">
-    <h1>SSI Learning & Development</h1>
-    <p>Secure access to training dashboards and resources</p>
+    <h1>SSI Learning & Development Portal</h1>
+    <p>Secure access to training dashboards, reports and resources</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -156,3 +164,20 @@ if st.button("Login"):
 
     else:
         st.error("Invalid email or password")
+# ==================================================
+# FOOTER
+# ==================================================
+st.markdown(
+    """
+    <hr style="margin-top:70px;">
+    <div class="footer">
+        © 2026 SS Innovations International, Inc. <br>
+        © 2026 Sudhir Srivastava Innovations Pvt. Ltd. <br>
+        All products and product names are registered trademarks or pending trademarks. <br>
+        All Rights Reserved | Internal Use Only. <br>
+        Contact: Vishwajeet Singh (vishwajeet.singh@ssinnovations.org (+91 80020-60789)) <br>
+                 Abhijeet Sharma (abhijeet.sharma@ssinnovations.org (+91 96508-14325))
+    </div>
+    """,
+    unsafe_allow_html=True
+)
